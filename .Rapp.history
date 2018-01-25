@@ -1,0 +1,293 @@
+qqnorm(y)
+qqline(y)
+w1 <- read.csv(file="/Users/zmao/Downloads/w1.dat",sep=",",head=TRUE)
+stripchart(w1$vals)
+stripchart(w1$vals,method="stack")
+stripchart(w1$vals,method="jitter")
+stripchart(w1$vals,vertical=TRUE)
+stripchart(w1$vals,vertical=TRUE,method="jitter")
+stripchart(w1$vals,method="stack",#
+             main='Leaf BioMass in High CO2 Environment',#
+             xlab='BioMass of Leaves')
+title('Leaf BioMass in High CO2 Environment',xlab='BioMass of Leaves')
+hist(w1$vals,main="Distribution of w1",xlab="w1")
+hist(w1$vals,breaks=2)
+hist(w1$vals,breaks=3)
+hist(w1$vals,breaks=10)
+hist(w1$vals,breaks=12,xlim=c(-1,2))
+hist(w1$vals,main='Leaf BioMass in High CO2 Environment',xlab='BioMass of Leaves',ylim=c(0,16))
+stripchart(w1$vals,add=TRUE,at=15.5)
+boxplot(w1$vals)
+boxplot(w1$vals,#
+          main='Leaf BioMass in High CO2 Environment',#
+          xlab='BioMass of Leaves',#
+          horizontal=TRUE)
+hist(w1$vals,main='Leaf BioMass in High CO2 Environment',xlab='BioMass of Leaves',ylim=c(0,16))
+boxplot(w1$vals,horizontal=TRUE,at=15.5,add=TRUE,axes=FALSE)
+boxplot(w1$vals,horizontal=TRUE,at=16,add=TRUE,axes=FALSE)
+stripchart(w1$vals,add=TRUE,at=15)
+tree$C <- factor(tree$C)
+tree$N <- factor(tree$N)
+boxplot(tree$STBM,#
+          main='Stem BioMass in Different CO2 Environments',#
+          ylab='BioMass of Stems')
+boxplot(tree$STBM~tree$C)
+plot(tree$STBM,tree$LFBM)
+cor(tree$STBM,tree$LFBM)
+plot(tree$STBM,tree$LFBM,#
+       main="Relationship Between Stem and Leaf Biomass",#
+       xlab="Stem Biomass",#
+       ylab="Leaf Biomass")
+qqnorm(w1$vals)
+qqline(w1$vals)
+x <- rnorm(10,sd=5,mean=20)
+y <- 2.5*x - 1.0 + rnorm(10,sd=9,mean=0)
+cor(x,y)
+plot(x,y,xlab="Independent",ylab="Dependent",main="Random Stuff")
+x1 <- runif(8,15,25)
+y1 <- 2.5*x1 - 1.0 + runif(8,-6,6)
+points(x1,y1,col=2)
+x2 <- runif(8,15,25)
+y2 <- 2.5*x2 - 1.0 + runif(8,-6,6)
+points(x2,y2,col=3,pch=2)
+legend(14,70,c("Original","one","two"),col=c(1,2,4),pch=c(1,3,5))
+legend(14,65,c("Original","one","two"),col=c(1,2,4),pch=c(1,3,5))
+legend(14,65,c("Original","one","two"),col=c(1,1,4),pch=c(1,3,5))
+legend(16,65,c("Original","one","two"),col=c(1,1,4),pch=c(1,3,5))
+plot(x,y,xlab="Independent",ylab="Dependent",main="Random Stuff")
+xHigh <- x
+yHigh <- y + abs(rnorm(10,sd=3.5))
+xLow <- x
+yLow <- y - abs(rnorm(10,sd=3.1))
+arrows(xHigh,yHigh,xLow,yLow,col=2,angle=90,length=0.1,code=3)
+uData <- rnorm(20)
+vData <- rnorm(20,mean=5)
+wData <- uData + 2*vData + rnorm(20,sd=0.5)
+xData <- -2*uData+rnorm(20,sd=0.1)
+yData <- 3*vData+rnorm(20,sd=2.5)
+d <- data.frame(u=uData,v=vData,w=wData,x=xData,y=yData)
+pairs(d)
+x = c(-1,1,1,-1,-1)
+y = c(-1,-1,1,1,-1)
+plot(x,y)
+polygon(x,y,col='blue')
+stdDev <- 0.75
+x <- seq(-5,5,by=0.01)
+y <- dnorm(x,sd=stdDev)
+right <- qnorm(0.95,sd=stdDev)
+plot(x,y,type="l",xaxt="n",ylab="p",#
+       xlab=expression(paste('Assumed Distribution of ',bar(x))),#
+       axes=FALSE,ylim=c(0,max(y)*1.05),xlim=c(min(x),max(x)),#
+       frame.plot=FALSE)
+axis(1,at=c(-5,right,0,5),#
+       pos = c(0,0),#
+       labels=c(expression(' '),expression(bar(x)[cr]),expression(mu[0]),expression(' ')))
+axis(2)
+xReject <- seq(right,5,by=0.01)
+yReject <- dnorm(xReject,sd=stdDev)
+polygon(c(xReject,xReject[length(xReject)],xReject[1]),#
+          c(yReject,0, 0), col='red')
+x <- seq(0,2*pi,by=pi/100)
+y <- x
+xg <- (x*0+1) %*% t(y)
+yg <- (x) %*% t(y*0+1)
+f <- sin(xg+yg)
+persp(x,y,f,theta=-10,phi=40)
+persp(x,y,f,theta=10,phi=40)
+numberWhite <- rhyper(30,4,5,3)
+totals <- table(numberWhite)
+totals
+barplot(totals,main="Number Draws",ylab="Frequency",xlab="Draws")
+rownames(totals) <- c("none","one","two","three")
+totals <- table(numberWhite)
+rownames(totals) <- c("none","one","two","three")
+rownames(totals) <- c("none","one","two")
+barplot(totals,main="Number Draws",ylab="Frequency",xlab="Draws")
+barplot(sort(totals,decreasing=TRUE),main="Number Draws",ylab="Frequency",xlab="Draws")
+santa <- data.frame(belief=c('no belief','no belief','no belief','no belief',#
+                               'belief','belief','belief','belief',#
+                               'belief','belief','no belief','no belief',#
+                               'belief','belief','no belief','no belief'),#
+                      sibling=c('older brother','older brother','older brother','older sister',#
+                                'no older sibling','no older sibling','no older sibling','older sister',#
+                                'older brother','older sister','older brother','older sister',#
+                                'no older sibling','older sister','older brother','no older sibling')#
+                      )
+summary(santa)
+plot(santa$sibling,santa$belief)
+mosaicplot(totals,main="Older Brothers are Jerks",#
+              xlab="Belief in Santa Claus",ylab="Older Sibling")
+totals = table(santa$belief,santa$sibling)
+mosaicplot(totals,main="Older Brothers are Jerks",#
+              xlab="Belief in Santa Claus",ylab="Older Sibling")
+mosaicplot(totals,main="Older Brothers are Jerks",#
+              xlab="Belief in Santa Claus",ylab="Older Sibling",#
+              col=c(2,3,4))
+totals[c(2,1),c(2,3,1)]
+mosaicplot(totals[c(2,1),c(2,3,1)],main="Older Brothers are Jerks",#
+       xlab="Belief in Santa Claus",ylab="Older Sibling",col=c(2,3,4))
+mosaicplot(t(totals),main="Older Brothers are Jerks",#
+       ylab="Belief in Santa Claus",xlab="Older Sibling",col=c(2,3))
+x = rexp(20,rate=4)
+hist(x,ylim=c(0,18),main="This Are An Histogram",xlab="X")
+boxplot(x,at=16,horizontal=TRUE,add=TRUE)
+rug(x,side=1)
+d = density(x)
+points(d,type='l',col=3)
+dev.new()
+dev.list()
+dev.set(3)
+x = rnorm(20)
+hist(x)
+dev.set(2)
+boxplot(x)
+dev.set(4)
+qqnorm(x)
+qqline(x)
+dev.next()
+dev.set(dev.next())
+plot(density(x))
+x = rnorm(100)
+hist(x)
+dev.print(device=png,width=200,"hist.png")
+pwd
+workdir
+workdir()
+getwd()
+dev.print(device=png,width=200,"hist.pdf")
+x <- rnorm(10,mean=0,sd=4)
+y <- 3*x-1+rnorm(10,mean=0,sd=2)
+summary(y)
+plot(x,y,axes=FALSE,col=2)
+axis(1,pos=c(0,0),at=seq(-7,5,by=1))
+axis(2,pos=c(0,0),at=seq(-18,11,by=2))
+plot(x,y,bty="7")
+plot(x,y,bty="n")
+box(lty=3)
+box(lty=o)
+box(lty="o")
+plot(x,y,bty="o")
+plot(x,y,bty="l")
+plot(x,y,bty="c")
+plot(x,y,bty="u")
+plot(x,y,bty="n")
+plot(x,y,bty="l")
+text(-1,-2,"numbers!")
+text(-7,-2,"outside the area",xpd=TRUE)
+text(-7,-2,"outside the area")
+a <- c(1,2,3,4,5)
+b <- c(TRUE,FALSE,FALSE,TRUE,FALSE)
+a[b]
+a <- c(1,2,3,4,NA)
+a
+sum(a)
+sum(a,na.rm=TRUE)
+!is.na(a)
+a[!is.na(a)]
+b <- a[!is.na(a)]
+b
+a = c(6,2,5,3,8,2)
+a
+b = a[a<6]
+b
+d = data.frame(one=as.factor(c('a','a','b','b','c','c')),#
+                two=c(1,2,3,4,5,6))
+d
+both = d$two[(d$one=='a') | (d$one=='b')]
+both
+(c(TRUE,TRUE))|(c(FALSE,TRUE))
+(c(TRUE,TRUE)) || (c(FALSE,TRUE))
+(c(TRUE,TRUE))&(c(FALSE,TRUE))
+(c(TRUE,TRUE))&&(c(FALSE,TRUE))
+year <- c(2000 ,   2001  ,  2002  ,  2003 ,   2004)
+rate <- c(9.34 ,   8.50  ,  7.62  ,  6.93  ,  6.60)
+plot(year,rate,#
+     main="Commercial Banks Interest Rate for 4 Year Car Loan",#
+     sub="http://www.federalreserve.gov/releases/g19/20050805/")
+cor(year,rate)
+help(lm)
+fit <- lm(rate ~ year)
+fit
+res <- rate - (fit$coefficients[[2]]*year+fit$coefficients[[1]])
+plot(year,res)
+residuals(fit)
+plot(year,fit$residuals)
+plot(year,rate,#
+     main="Commercial Banks Interest Rate for 4 Year Car Loan",#
+     sub="http://www.federalreserve.gov/releases/g19/20050805/")
+abline(fit)
+summary(fit)
+a <- 5
+s <- 2
+n <- 20
+error <- qnorm(0.975)*s/sqrt(n)
+a <- 5
+s <- 2
+n <- 20
+xbar <- 7
+z <- (xbar-a)/(s/sqrt(n))
+z
+2*pnorm(-abs(z))
+source('/Users/zmao/M-Data/School/TempCode/test.R')
+engine <- read.csv(file="/Users/zmao/M-Data/School/TempCode/table_7_3.csv",sep=",",head=TRUE)
+names(engine)
+qqnorm(engine$co,main="Carbon Monoxide")
+qqline(engine$co)
+boxplot(engine$co,main="Carbon Monoxide")
+hist(engine$co,main="Carbon Monoxide")
+lengine <- log(engine$co)
+boxplot(lengine,main="Carbon Monoxide")
+hist(lengine,main="Carbon Monoxide")
+qqnorm(lengine,main="QQ Plot for the Log of the Carbon Monoxide")
+qqline(lengine)
+m <- mean(lengine)
+s <- sd(lengine)#
+n <- length(lengine)
+m
+s
+n
+se <- s/sqrt(n)
+se
+error <- se*qt(0.975,df=n-1)
+error
+left <- m-error
+right <- m + error
+lNull <- log(5.4) - error
+rNull <- log(5.4) + error
+2*(1-pt((m-log(5.4))/se,df=n-1))
+t.test(lengine,mu = log(5.4),alternative = "two.sided")
+t.test(lengine,mu = log(5.8),alternative = "two.sided")
+power.t.test(n=n,delta=log(7)-log(5.4),sd=s,sig.level=0.05,#
+              type="one.sample",alternative="two.sided",strict = TRUE)
+t3 <- read.csv(file="/Users/zmao/M-Data/School/TempCode/table3.csv",header=TRUE,sep=",",row.names="group")
+row.names(t3)
+t3$M.88
+t3$M.99
+diff <- t3$M.88-t3$M.99
+se <- sqrt(t3$SE.88^2+t3$SE.99^2)
+se
+deg <- pmin(t3$N.88,t3$N.99)-1
+deg
+t <- diff/se
+t
+pt(t,df=deg)
+pt(-abs(t),df=deg)
+2*pt(-abs(t),df=deg)
+> for (j in 1:length(p)) {#
+     cat("p-value for ",row.names(t3)[j]," ",p[j],"\n");#
+}
+for (j in 1:length(p)) {#
+     cat("p-value for ",row.names(t3)[j]," ",p[j],"\n");#
+}
+p <- 2*pt(-abs(t),df=deg)
+for (j in 1:length(p)) {#
+     cat("p-value for ",row.names(t3)[j]," ",p[j],"\n");#
+}
+tcut <- qt(0.975,df=deg)
+tcut
+pwd
+library(shiny)
+library(shiny)
+setwd("/Users/zmao/M-Data/School/Rshiny/")
+runApp("employee_attrition")
+runApp("employee_attrition")
